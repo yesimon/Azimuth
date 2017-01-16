@@ -4,6 +4,7 @@ import os
 import numpy as np
 import azimuth.util
 import shutil
+import sys
 import pickle
 import pylab as plt
 import pandas
@@ -526,7 +527,12 @@ def predict(seq, aa_cut=-1, percent_peptide=-1, model=None, model_file=None, pam
 
 
     if model_file is None:
-        azimuth_saved_model_dir = os.path.join(os.path.dirname(azimuth.__file__), 'saved_models')
+        if sys.version_info > (3, 0):
+            version_dir = 'saved_models'
+        else:
+            version_dir = 'saved_models_py2'
+
+        azimuth_saved_model_dir = os.path.join(os.path.dirname(azimuth.__file__), 'saved_models_py2')
         if np.any(percent_peptide == -1) or (percent_peptide is None and aa_cut is None):
             print("No model file specified, using V3_model_nopos")
             model_name = 'V3_model_nopos.pickle'
@@ -606,8 +612,13 @@ def write_results(predictions, file_to_predict):
 if __name__ == '__main__':
     #save_final_model_V3(filename='azimuth/azure_models/V3_model_full.pickle', include_position=True)
 
-    save_final_model_V3(filename='saved_models/V3_model_nopos.pickle', include_position=False)
-    save_final_model_V3(filename='saved_models/V3_model_full.pickle', include_position=True)
+    if sys.version_info > (3, 0):
+        save_final_model_V3(filename='saved_models/V3_model_nopos.pickle', include_position=False)
+        save_final_model_V3(filename='saved_models/V3_model_full.pickle', include_position=True)
+
+    else:
+        save_final_model_V3(filename='saved_models_py2/V3_model_nopos.pickle', include_position=False)
+        save_final_model_V3(filename='saved_models_py2/V3_model_full.pickle', include_position=True)
 
     # predict('GGGCCGCTGTTGCAGGTGGCGGGTAGGATC', 'sense', 1200, 30.3, model_file='../saved_models/final_model_nicolo.pickle')
 
