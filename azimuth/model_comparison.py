@@ -532,7 +532,7 @@ def predict(seq, aa_cut=-1, percent_peptide=-1, model=None, model_file=None, pam
         else:
             version_dir = 'saved_models_py2'
 
-        azimuth_saved_model_dir = os.path.join(os.path.dirname(azimuth.__file__), 'saved_models_py2')
+        azimuth_saved_model_dir = os.path.join(os.path.dirname(azimuth.__file__), version_dir)
         if np.any(percent_peptide == -1) or (percent_peptide is None and aa_cut is None):
             print("No model file specified, using V3_model_nopos")
             model_name = 'V3_model_nopos.pickle'

@@ -11,5 +11,12 @@ setup(name='Azimuth',
       package_data={'azimuth': ['saved_models/*.*', 'saved_models/*.*']},
       install_requires=['scipy', 'numpy', 'matplotlib', 'nose', 'scikit-learn>=0.18', 'pandas', 'biopython'],
       license="BSD",
+      classifiers=[
+          'License :: OSI Approved :: BSD License',
+          'Topic :: Scientific/Engineering :: Bio-Informatics',
+          'Programming Language :: Python :: 2.7',
+          'Programming Language :: Python :: 3.5',
+          'Programming Language :: Python :: 3.6',
+      ],
       # ext_modules=cythonize("ssk_cython.pyx"),
-      )
+)

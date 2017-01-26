@@ -49,7 +49,7 @@ import azimuth.model_comparison
 azimuth.model_comparison.predict(GUIDE, CUT_POSITION, PERCENT_PEPTIDE)[0]
 
 ```
-where GUIDE, PERCENT_PEPTIDE and CUT_POSITION are numpy arrays.
+where GUIDE, PERCENT_PEPTIDE and CUT_POSITION are numpy arrays. CUT_POSITION and PERCENT_PEPTIDE can be `None` if they are unavailable.
  
 #### Generating new model .pickle files
 
@@ -59,5 +59,3 @@ Sometimes the pre-computed .pickle files in the saved_models directory are incom
 
 You can submit bug reports using the github issue tracker. 
 If you have any other question please contact: azimuth@microsoft.com.
-
-
